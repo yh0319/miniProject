@@ -1,0 +1,59 @@
+
+SQL*Loader: Release 11.2.0.2.0 - Production on 수 10월 24 14:33:12 2018
+
+Copyright (c) 1982, 2009, Oracle and/or its affiliates.  All rights reserved.
+
+Control File:   C:\0.ITStudy\2.java\forexdb\FOREX.ctl
+Data File:      C:\\0.ITStudy\\2.java\\forexdb\\forex.csv
+  Bad File:     C:\0.ITStudy\2.java\forexdb\forex.bad
+  Discard File:  none specified
+ 
+ (Allow all discards)
+
+Number to load: ALL
+Number to skip: 0
+Errors allowed: 50
+Bind array:     64 rows, maximum of 256000 bytes
+Continuation:    none specified
+Path used:      Conventional
+
+Table FOREX, loaded from every logical record.
+Insert option in effect for this table: REPLACE
+
+   Column Name                  Position   Len  Term Encl Datatype
+------------------------------ ---------- ----- ---- ---- ---------------------
+TIME                                FIRST     *   ,  O(") CHARACTER            
+USDKRW                               NEXT     *   ,  O(") CHARACTER            
+KRWEUR                               NEXT     *   ,  O(") CHARACTER            
+EURCNY                               NEXT     *   ,  O(") CHARACTER            
+KRWJPY                               NEXT     *   ,  O(") CHARACTER            
+KRWCNY                               NEXT     *   ,  O(") CHARACTER            
+EURKRW                               NEXT     *   ,  O(") CHARACTER            
+GBPEUR                               NEXT     *   ,  O(") CHARACTER            
+JPYKRW                               NEXT     *   ,  O(") CHARACTER            
+GBPUSD                               NEXT     *   ,  O(") CHARACTER            
+
+Record 1: Rejected - Error on table FOREX, column USDKRW.
+ORA-01722: invalid number
+
+
+Table FOREX:
+  418 Rows successfully loaded.
+  1 Row not loaded due to data errors.
+  0 Rows not loaded because all WHEN clauses were failed.
+  0 Rows not loaded because all fields were null.
+
+
+Space allocated for bind array:                 165120 bytes(64 rows)
+Read   buffer bytes: 1048576
+
+Total logical records skipped:          0
+Total logical records read:           419
+Total logical records rejected:         1
+Total logical records discarded:        0
+
+Run began on 수 10월 24 14:33:12 2018
+Run ended on 수 10월 24 14:33:13 2018
+
+Elapsed time was:     00:00:00.08
+CPU time was:         00:00:00.04
