@@ -1,0 +1,98 @@
+﻿------------ 시작 전에 모든 table drop 시키기 ------------
+drop table movies;
+drop table actors;
+drop table directors;
+
+
+------------ actors ------------
+drop table actors;
+
+create table actors(
+     ac_no number(2) constraint actors_no_u unique,
+     ac_name varchar2(40) constraint actors_name_pk primary key,
+     ac_company varchar2(30),
+     ac_movie varchar2(30),
+     gender char(1) default 'M'
+     );
+
+select constraint_name, constraint_type, table_name
+from user_constraints where table_name='ACTORS';
+
+insert all
+     into actors values(1, '권상우', '수컴퍼니', '포화속으로', 'M')
+     into actors values(2, '이병헌', 'BH엔터테인먼트', '내부자들', 'M')
+     into actors (ac_no, ac_name, ac_movie, gender) values(3, '안소니 곤잘레스', '아이스박스', 'M')
+     into actors (ac_no, ac_name, ac_movie, gender) values(4, '라이언 레이놀즈', '우먼인골드', 'M')
+     into actors values(5, '류준열', '씨제스엔터테인먼트', '더 킹', 'M')
+     into actors (ac_no, ac_name, ac_movie, gender) values(6, '하정우', '신과함께', 'M')
+     into actors values(7, '차태현', '블러썸엔터테인먼트', '엽기적인그녀', 'M')
+     into actors values(8, '성동일', '서진E&M', '신과함께', 'M')
+     into actors values(9, '박정민', '샘컴퍼니', '변산', 'M')
+     into actors (ac_no, ac_name, ac_movie, gender) values(10, '조슈 브롤린', '가디언즈오브갤럭시', 'M')
+     into actors (ac_no, ac_name, ac_movie, gender) values(11, '벤자민 브랫', '샷 콜러', 'M')
+     into actors values(12, '조진웅', '사람엔터테인먼트', '공작', 'M')
+     into actors values(13, '김윤석', '화이브라더스코리아', '극비수사', 'M')
+     into actors (ac_no, ac_name, ac_movie, gender) values(14, '채드윅 보스만', '블랙팬서', 'M')
+     into actors (ac_no, ac_name, ac_movie, gender) values(15, '마이클 B 조던', '판타스틱4', 'M')
+	select * from dual;
+commit	
+select * from actors;
+	
+	
+------------ directors ------------
+drop table directors;
+
+create table directors(
+   dir_no number(5) constraint directors_no_u unique,
+   dir_name varchar(30) constraint directors_name_pk primary key,
+   mv_name varchar(30)
+);
+
+select constraint_name, constraint_type, table_name
+from user_constraints where table_name='DIRECTORS';
+
+insert all
+   into directors values(101, '이언희', '탐정: 리턴즈')
+   into directors values(102, '최성현', '그것만이 내 세상')
+   into directors values(103, '리 언크리치', '코코')
+   into directors values(104, '데이빗 레이치', '데드풀2')
+   into directors values(105, '이해영', '독전')
+   into directors values(106, '장준환', '1987')
+   into directors values(107, '라이언 쿠글러', '블랙팬서')
+   into directors values(108, '후안 안토니오 바요나', '쥬라기 월드')
+   into directors values(109, '김용화', '신과 함께 죄와벌')
+   into directors values(110, '조 루소', '어벤저스 인피니트 워')
+select * from dual;
+commit
+select * from directors;
+
+
+------------ movies ------------
+
+drop table movies;
+
+create table movies(
+	mv_no number(2) constraint movie_no_u unique,
+	mv_name varchar2(40) constraint movie_movie_pk primary key,
+	mv_genre varchar2(15),
+	mv_region varchar2(8),
+	dir_name varchar2(30),
+	ac_name varchar2(40),
+	constraint movie_dir_name_fk foreign key (dir_name) references directors(dir_name),
+	constraint movie_ac_name_fk foreign key (ac_name) references actors(ac_name)
+);
+
+select constraint_name, constraint_type, table_name
+from user_constraints where table_name='MOVIES';
+
+insert all
+	into movies values(1, '탐정: 리턴즈', '코미디', '국내', '이언희', '권상우')
+	into movies values(2, '그것만이 내 세상', '코미디', '국내', '최성현', '이병헌')
+	into movies values(3, '코코', '애니메이션', '해외', '리 언크리치', '벤자민 브랫')
+	into movies values(4, '데드풀2', '액션', '해외', '데이빗 레이치', '라이언 레이놀즈')
+	into movies values(5, '독전', '범죄', '국내', '이해영', '조진웅')
+	into movies values(6, '1987', '드라마', '국내', '장준환', '김윤석')
+	into movies values(7, '블랙팬서', '액션', '해외', '라이언 쿠글러', '채드윅 보스만')
+select * from dual;
+commit
+select * from movies;
