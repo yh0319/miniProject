@@ -1,6 +1,3 @@
-# 알라딘, 위키북스
-# 1인 1작품, 2인 1팀
-
 
 import requests
 import lxml.html
