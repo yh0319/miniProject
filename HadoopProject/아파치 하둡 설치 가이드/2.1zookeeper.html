@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+.info {
+    background-color: #f0f2f5;
+    border-left: 5px solid #b8d9f3;
+    margin-bottom: 20px;
+    padding : 5px;
+    line-height: 30px;
+}
+
+.subtitle{
+    font-size: 20px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+<body>
+
+<h2>Hadoop and Hadoop-related software : <font color="red"> Zookeeper</font></h2>
+참고사이트 링크 ☞☞  <a href="http://zookeeper.apache.org/" target="_blank">Zookeeper site</a>
+
+<hr color="blue">
+<br>
+
+<div class="subtitle">
+    Zookeeper 란?
+</div>
+<br>
+
+<div class="info">
+    수십~수천 대의 서버에 설치돼 있는 빅데이터 분산환경을 더욱 효율적으로 관리하기 위해서는 서버 간의 정보를 쉽고 안전하게 공유해야 한다.<br>
+    공유된 정보를 이용해 서버 간의 중요한 이벤트(분산락, 순서제어, 부하분산, 네임서비스 등)를 관리하면서 상호작용을 조율해주는 코디네이터 시스템이 필요한데<br>
+    이것이 바로 분산 코디네이터인 아파치 주키퍼 이다.
+</div>
+
+<br><br>
+<div class="subtitle">
+    주키퍼 설치하기</div>
+<br><br>
+<div class="info">
+        1. 주키퍼를 다운받고, 압축을 풀어줍니다.<br>
+     
+        &nbsp;&nbsp; <img src="3.수행평가-1/25.PNG" width="800" height="600">
+        <br>
+        &nbsp;&nbsp; <img src="3.수행평가-1/26.PNG" width="800" height="600">
+        <br><br>
+
+        2. vi ~/.bashrc 에서 다음과 같이 편집하고, source ~/.bashrc로 적용해 줍니다.<br>
+     
+        &nbsp;&nbsp; <img src="3.수행평가-1/27.PNG" width="800" height="600">
+        <br>
+        &nbsp;&nbsp; <img src="3.수행평가-1/28.PNG" width="800" height="600">
+        <br><br>
+        3. zoo.cfg 파일을 아래와 같이 편집해 줍니다.<br>
+     
+        &nbsp;&nbsp; <img src="3.수행평가-1/29.PNG" width="800" height="600">
+        <br><br>
+        4. 주키퍼 시작, 상태확인을 합니다.<br>
+     
+        &nbsp;&nbsp; <img src="3.수행평가-1/29-1.png" width="800" height="80">
+        <br>
+        &nbsp;&nbsp; <img src="3.수행평가-1/29-2.png" width="800" height="80">
+        <br><br>
+
+
+
+
+
+</div>
+<br><br><br>
+
+
+
+
+</body>
+</html>
