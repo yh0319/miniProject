@@ -28,7 +28,7 @@ def main():
     #--------------------------------------------------------------------------------------------------------------------
     lists = list_kor + list_eng_s + list_eng_l + list_dig
 
-    API_KEY = "a4e3f95d68d41e52302efe7c6fbd2abf"
+    API_KEY = "발급받은API인증키를입력하시오"
     category = ["dan", "yon", "media", "disabled", "web", "map", "music", "etc", "archive", "cip", "korcis"]
     mainurl = 'http://www.nl.go.kr/app/nl/search/openApi/search.jsp?key='
 
@@ -39,14 +39,12 @@ def main():
         time.sleep(1)
         response = session.get(url)
         bookInfo = scrape_detail_page(response)
-        #print(bookInfo)
         library_book_list.append(bookInfo)
         break
 
     library_book_list_new = list_clear(library_book_list)
 
     categorized_book_list = categorization(library_book_list_new)
-    #print(categorized_book_list[1])
    
     with open("publicLibrary.json", "w", encoding="utf-8-sig") as f:
         json.dump(categorized_book_list, fp=f, ensure_ascii=False, indent=3)
@@ -58,7 +56,6 @@ def main():
 def scrape_list_page(lists, category, mainurl, API_KEY):
     for x in lists[1]:
         for y in category:
-            #url =  list_url.append(url + API_KEY + '&kwd=' + x + '&pageSize=500&pageNum={}'.format+ '&category=' + y)
             url = "{}{}&kwd={}&pageSize=500&pageNum=1&category={}&topF1=title".format(mainurl,API_KEY,x,y)
             print(url)
             yield url
@@ -67,7 +64,6 @@ def scrape_detail_page(response):
     try:
         soup = BeautifulSoup(response.text,'html.parser') 
         bookInfo = []
-        #count = 1
         for i in range(len(soup.select("title_info"))):
             category = soup.select("category")[0].string
             title = re.sub(r'</?b>','',soup.select("title_info")[i].string)
@@ -77,7 +73,6 @@ def scrape_detail_page(response):
             no = soup.select("call_no")[i].string
             id = soup.select("id")[i].string
             classification = soup.select("kdc_name_1s")[i].string
-            #count += 1
 
             dict = {
                 'category' : category,
@@ -88,7 +83,6 @@ def scrape_detail_page(response):
                 'no' : no,
                 'id' : id,
                 'classification' : classification
-                #'count' : count
              }
             bookInfo.append(dict)
         return bookInfo
@@ -156,7 +150,6 @@ def insertMongDB(list):
     myclient = pymongo.MongoClient('mongodb://localhost:27017/')
     #database 생성
     mydb = myclient['libraryBooks']  #libraryBooks
-    #print(myclient.list_database_names())
 
     '''
     #데이터베이스 존재 여부 확인
